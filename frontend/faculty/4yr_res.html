@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4th Year Feedback Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/Student_Survey/frontend/css/res.css">
+    <link rel="stylesheet" href="/Student_Survey/frontend/css/fnavbar.css"> <!-- Add CSS for navbar -->
+    <style>
+        /* Additional CSS for canvas size */
+        #feedbackChart {
+            max-width: 800px; /* Set the max width of the chart */
+            height: 400px;    /* Set the height of the chart */
+            margin: 20px auto; /* Center the chart */
+        }
+
+        /* Add margin to heading and select dropdown */
+        .head {
+            margin-top: 60px; /* Adjust this value based on navbar height */
+            text-align: center; /* Center the heading */
+        }
+
+        label {
+            display: block; /* Ensure label is on a new line */
+            margin: 20px auto; /* Center the label and add some spacing */
+            text-align: center; /* Center the label text */
+        }
+
+        select{
+            display: block; /* Ensure label is on a new line */
+            margin: 20px auto; /* Center the label and add some spacing */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Faculty Navigation -->
+    <nav class="vertical-nav">
+        <ul>
+            <li><a href="/Student_Survey/frontend/faculty/dashboard.html">Dashboard</a></li>
+            <li><a href="/Student_Survey/frontend/faculty/addq.html">Add Questions</a></li>
+            <li class="dropdown">
+                <a href="#">Responses</a>
+                <ul class="dropdown-content">
+                    <li><a href="/Student_Survey/frontend/faculty/1yr_res.html">1st Year Response</a></li>
+                    <li><a href="/Student_Survey/frontend/faculty/2yr_res.html">2nd Year Response</a></li>
+                    <li><a href="/Student_Survey/frontend/faculty/3yr_res.html">3rd Year Response</a></li>
+                    <li><a href="/Student_Survey/frontend/faculty/4yr_res.html">4th Year Response</a></li>
+                </ul>
+            </li>
+        </ul>
+        <a href="/Student_Survey/login.html" class="sign-out">Sign Out</a>
+    </nav>
+
+    <h1 class="head">4th Year Feedback Results</h1>
+
+    <!-- Department Sorting Dropdown -->
+    <label for="departmentSelect">Sort by Department:</label>
+    <select id="departmentSelect">
+        <option value="">Select Department</option>
+        <option value="AE">AE</option>
+        <option value="AI & DS">AI & DS</option>
+        <option value="AI & ML">AI & ML</option>
+        <option value="BME">BME</option>
+        <option value="BT">BT</option>
+        <option value="CE">CE</option>
+        <option value="CSD">CSD</option>
+        <option value="CSBS">CSBS</option>
+        <option value="CT">CT</option>
+        <option value="ECE">ECE</option>
+        <option value="EEE">EEE</option>
+        <option value="EIE">EIE</option>
+        <option value="FASHION">FASHION</option>
+        <option value="FT">FT</option>
+        <option value="IT">IT</option>
+        <option value="ME">ME</option>
+        <option value="MECH">MECH</option>
+        <option value="TEXTILE">TEXTILE</option>
+    </select>
+
+    <!-- Feedback Chart -->
+    <canvas id="feedbackChart"></canvas>
+
+    <script>
+        // Example fetched data
+        const fetchedData = [
+            { feedback_column: 'Feedback 1', feedback_count: '1' },
+            { feedback_column: 'Feedback 2', feedback_count: '1' },
+            { feedback_column: 'Feedback 3', feedback_count: '1' },
+            { feedback_column: 'Feedback 4', feedback_count: '1' },
+            { feedback_column: 'Feedback 5', feedback_count: '1' },
+            { feedback_column: 'Feedback 6', feedback_count: '1' },
+            { feedback_column: 'Feedback 7', feedback_count: '1' },
+            { feedback_column: 'Feedback 8', feedback_count: '1' },
+            { feedback_column: 'Feedback 9', feedback_count: '10' },
+            { feedback_column: 'Feedback 10', feedback_count: '10' }
+        ];
+
+        // Extract labels and data for the chart
+        const chartLabels = fetchedData.map(item => item.feedback_column);
+        const chartData = fetchedData.map(item => item.feedback_count);
+
+        // Create the chart
+        const ctx = document.getElementById('feedbackChart').getContext('2d');
+        const feedbackChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: 'Feedback Count',
+                    data: chartData,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Add functionality to handle sorting by department
+        const departmentSelect = document.getElementById('departmentSelect');
+        departmentSelect.addEventListener('change', function() {
+            const selectedDepartment = departmentSelect.value;
+            console.log('Selected Department:', selectedDepartment);
+            // Add filtering logic for the selected department here if needed
+        });
+    </script>
+</body>
+</html>

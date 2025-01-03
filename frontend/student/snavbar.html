@@ -1,0 +1,16 @@
+<!-- snavbar.html -->
+<div class="sidebar">
+    <h2>Navigation</h2>
+    <ul>
+        <li><a href="/Student_Survey/frontend/student/summary.php">Summary</a></li>
+        <li><a href="/Student_Survey/frontend/student/add_feedback.html">Add Feedback</a></li>
+        <li  ><a href="#" id="signOutButton">Sign Out</a></li>
+    </ul>
+</div>
+
+<script>
+    document.getElementById('signOutButton').addEventListener('click', function() {
+        console.log('Signing out...');
+        window.location.href = '/Student_Survey/login.html'; // Redirect to login page
+    });
+</script>

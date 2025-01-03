@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container,
+.survey-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.g-signin2 {
+    display: flex;
+    justify-content: center;  /* Better centering */
+    margin-top: 200px;
+    margin-left: 200px;
+}
+
+.logo {
+    display: block;
+    margin: 200px auto 20px auto; /* Adjust spacing */
+    width: 20%;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 600px) {
+    .login-container,
+    .survey-container {
+        max-width: 100%;
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .logo {
+        width: 40%;  /* Adjust logo size for mobile */
+    }
+}

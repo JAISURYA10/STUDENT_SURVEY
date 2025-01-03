@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Feedback</title>
+    <link rel="stylesheet" href="/Student_Survey/frontend/css/snavbar.css" /> <!-- Link to the navbar CSS -->
+    <link rel="stylesheet" href="/Student_Survey/frontend/css/add_feedback.css" />
+    <!-- Link to any additional styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Light gray background for the whole page */
+        }
+
+        .content {
+            max-width: 600px; /* Maximum width for the form */
+            margin: 40px auto; /* Center the form horizontally */
+            padding: 20px; /* Inner padding for form content */
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        }
+
+        h1 {
+            text-align: center; /* Center the heading */
+            color: #333; /* Darker text color for contrast */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+
+        table {
+            width: 100%; /* Table takes full width */
+            border-collapse: collapse; /* Remove spacing between cells */
+        }
+
+        th, td {
+            padding: 12px; /* Increased padding for cells */
+            text-align: left; /* Align text to the left */
+            border-bottom: 1px solid #ddd; /* Light gray border for rows */
+        }
+
+        th {
+            background-color: #007bff; /* Blue background for header */
+            color: #ffffff; /* White text for header */
+        }
+
+        td {
+            background-color: #f9f9f9; /* Light gray for even rows */
+        }
+
+        input[type="number"] {
+            width: 100%; /* Full width input fields */
+            padding: 8px; /* Padding inside input fields */
+            border: 1px solid #ccc; /* Light border */
+            border-radius: 5px; /* Slightly rounded corners */
+        }
+
+        input[type="number"]:focus {
+            border-color: #007bff; /* Blue border on focus */
+            outline: none; /* Remove default outline */
+        }
+
+        button {
+            background-color: #007bff; /* Blue button background */
+            color: white; /* White text */
+            border: none; /* Remove default border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            display: block; /* Center the button */
+            margin: 20px auto 0; /* Space above and center it */
+            font-size: 16px; /* Larger font size */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Include the Navbar -->
+    <div id="navbar"></div>
+
+    <div class="content">
+        <h1>Add Feedback</h1>
+        <form action="/Student_Survey/backend/addfb.php" method="POST">
+            <table>
+                <tr>
+                    <th>Question</th>
+                    <th>Your Answer</th>
+                </tr>
+                <!-- Questions 1 to 10 -->
+                <tr>
+                    <td><label for="feedback1">1. How would you rate your overall experience?</label></td>
+                    <td><input type="number" id="feedback1" name="feedback1" required min="1" max="10" placeholder="1 to 10"></td>
+                </tr>
+                <tr>
+                    <td><label for="feedback2">2. How likely are you to recommend us?</label></td>
+                    <td><input type="number" id="feedback2" name="feedback2" required min="1" max="10" placeholder="1 to 10"></td>
+                </tr>
+                <tr>
+                    <td><label for="feedback3">3. How satisfied are you with our service?</label></td>
+                    <td><input type="number" id="feedback3" name="feedback3" required min="1" max="10" placeholder="1 to 10"></td>
+                </tr>
+                <tr>
+                    <td><label for="feedback4">4. How would you rate our support?</label></td>
+                    <td><input type="number" id="feedback4" name="feedback4" required min="1" max="10" placeholder="1 to 10"></td>
+                </tr>
+                <tr>
+                    <td><label for="feedback5">5. How easy was it to use our platform?</label></td>
+                    <td><input type="number" id="feedback5" name="feedback5" required min="1" max="10" placeholder="1 to 10"></td>
+                </tr>
+                <tr>
+                    <td><label for="feedback6">6. How would you rate the quality of our products?</label></td>
+                    <td><input type="number" id="feedback6" name="feedback6" required min="1" max="10" placeholder="1 to 10"></td>
+                </tr>
+                <tr>
+                    <td><label for="feedback7">7. How would you rate the variety of products?</label></td>
+                    <td><input type="number" id="feedback7" name="feedback7" required min="1" max="10" placeholder="1 to 10"></td>
+                </tr>
+                <tr>
+                    <td><label for="feedback8">8. How satisfied are you with our pricing?</label></td>
+                    <td><input type="number" id="feedback8" name="feedback8" required min="1" max="10" placeholder="1 to 10"></td>
+                </tr>
+                <tr>
+                    <td><label for="feedback9">9. How likely are you to return to our platform?</label></td>
+                    <td><input type="number" id="feedback9" name="feedback9" required min="1" max="10" placeholder="1 to 10"></td>
+                </tr>
+                <tr>
+                    <td><label for="feedback10">10. Any additional comments?</label></td>
+                    <td><input type="number" id="feedback10" name="feedback10" required min="1" max="10" placeholder="1 to 10"></td>
+                </tr>
+            </table>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+
+    <script>
+        // Load the navbar
+        document.getElementById('navbar').innerHTML = `
+            <div class="sidebar">
+                <h2>Navigation</h2>
+                <ul>
+                    <li><a href="/Student_Survey/frontend/student/summary.php">Summary</a></li>
+                    <li><a href="/Student_Survey/frontend/student/add_feedback.html">Add Feedback</a></li>
+                    <li><a href="#" id="signOutButton">Sign Out</a></li>
+                </ul>
+            </div>
+        `;
+
+        // Sign out functionality
+        document.getElementById('signOutButton').addEventListener('click', function() {
+            console.log('Signing out...');
+            window.location.href = '/Student_Survey/login.html'; // Redirect to login page
+        });
+    </script>
+</body>
+</html>

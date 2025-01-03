@@ -1,0 +1,31 @@
+/* summary.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Reset margin */
+    padding-left: 270px; /* Prevent overlap with sidebar */
+}
+
+h1 {
+    margin: 20px; /* Margin for the heading */
+}
+
+table {
+    width: calc(100% - 20px); /* Full width minus some padding */
+    margin: 20px; /* Add some space around the table */
+    border-collapse: collapse; /* Merge borders */
+}
+
+th, td {
+    padding: 10px; /* Add padding inside cells */
+    text-align: left; /* Align text to the left */
+    border: 1px solid #ddd; /* Light grey border */
+}
+
+th {
+    background-color: #f2f2f2; /* Light grey background for header */
+    font-weight: bold; /* Bold header text */
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5; /* Highlight row on hover */
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Questions</title>
+    <!-- Add your CSS file path if necessary -->
+    <link rel="stylesheet" href="/Student_Survey/frontend/css/addq.css">
+    <link rel="stylesheet" href="/Student_Survey/frontend/css/fnavbar.css">
+</head>
+<body>
+
+    <!-- Faculty Navigation -->
+    <nav class="vertical-nav">
+        <ul>
+            <li><a href="/Student_Survey/frontend/faculty/dashboard.html">Dashboard</a></li>
+            <li><a href="/Student_Survey/frontend/faculty/addq.html">Add Questions</a></li>
+            <li class="dropdown">
+                <a href="#">Responses</a>
+                <ul class="dropdown-content">
+                    <li><a href="/Student_Survey/frontend/faculty/1yr_res.html">1st Year Response</a></li>
+                    <li><a href="/Student_Survey/frontend/faculty/2yr_res.html">2nd Year Response</a></li>
+                    <li><a href="/Student_Survey/frontend/faculty/3yr_res.html">3rd Year Response</a></li>
+                    <li><a href="/Student_Survey/frontend/faculty/4yr_res.html">4th Year Response</a></li>
+                </ul>
+            </li>
+        </ul>
+        <a href="/Student_Survey/login.html" class="sign-out">Sign Out</a>
+    </nav>
+
+    <h1>Add Questions</h1>
+    <form action="/Student_Survey/backend/insert_questions.php" method="POST">
+        <label for="question1">Question 1:</label><br>
+        <input type="text" id="question1" name="question1" required><br><br>
+
+        <label for="question2">Question 2:</label><br>
+        <input type="text" id="question2" name="question2" required><br><br>
+
+        <label for="question3">Question 3:</label><br>
+        <input type="text" id="question3" name="question3" required><br><br>
+
+        <label for="question4">Question 4:</label><br>
+        <input type="text" id="question4" name="question4" required><br><br>
+
+        <label for="question5">Question 5:</label><br>
+        <input type="text" id="question5" name="question5" required><br><br>
+
+        <label for="question6">Question 6:</label><br>
+        <input type="text" id="question6" name="question6" required><br><br>
+
+        <label for="question7">Question 7:</label><br>
+        <input type="text" id="question7" name="question7" required><br><br>
+
+        <label for="question8">Question 8:</label><br>
+        <input type="text" id="question8" name="question8" required><br><br>
+
+        <label for="question9">Question 9:</label><br>
+        <input type="text" id="question9" name="question9" required><br><br>
+
+        <label for="question10">Question 10:</label><br>
+        <input type="text" id="question10" name="question10" required><br><br>
+
+        <input type="submit" value="Submit Questions">
+    </form>
+</body>
+</html>

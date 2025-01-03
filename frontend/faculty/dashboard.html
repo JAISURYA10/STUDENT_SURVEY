@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard</title>
+    <link rel="stylesheet" href="/Student_Survey/frontend/css/fdash.css">
+    <link rel="stylesheet" href="/Student_Survey/frontend/css/fnavbar.css">
+</head>
+<body>
+
+    <!-- Faculty Navigation -->
+    <nav class="vertical-nav">
+        <ul>
+            <li><a href="/Student_Survey/frontend/faculty/dashboard.html">Dashboard</a></li>
+            <li><a href="/Student_Survey/frontend/faculty/addq.html">Add Questions</a></li>
+            <li class="dropdown">
+                <a href="#">Responses</a>
+                <ul class="dropdown-content">
+                    <li><a href="/Student_Survey/frontend/faculty/1yr_res.html">1st Year Response</a></li>
+                    <li><a href="/Student_Survey/frontend/faculty/2yr_res.html">2nd Year Response</a></li>
+                    <li><a href="/Student_Survey/frontend/faculty/3yr_res.html">3rd Year Response</a></li>
+                    <li><a href="/Student_Survey/frontend/faculty/4yr_res.html">4th Year Response</a></li>
+                </ul>
+            </li>
+        </ul>
+        <a href="/Student_Survey/login.html" class="sign-out">Sign Out</a>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        <h2>Faculty Dashboard</h2>
+        <div class="stats">
+            <div class="stat-box">
+                <h3>Total Students</h3>
+                <p id="totalStudents">Loading...</p>
+            </div>
+            <div class="stat-box">
+                <h3>Total Responded</h3>
+                <p id="totalResponded">Loading...</p>
+            </div>
+        </div>
+        <button id="sendReminderBtn">Send Reminder Email</button>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // AJAX request to fetch data
+            $.ajax({
+                url: '/Student_Survey/backend/fetch_faculty_data.php', // Adjust the path if needed
+                type: 'GET',
+                success: function(data) {
+                    const response = JSON.parse(data);
+                    $('#totalStudents').text(response.total_students);
+                    $('#totalResponded').text(response.total_responses);
+                },
+                error: function(err) {
+                    console.log("Error fetching data:", err);
+                }
+            });
+
+            // Send Reminder Email
+            $('#sendReminderBtn').click(function() {
+                $.ajax({
+                    url: '/Student_Survey/backend/send_email.php', // Path to your email script
+                    type: 'POST',
+                    success: function(data) {
+                        const response = JSON.parse(data);
+                        alert(response.message); // Alert the user with the response message
+                    },
+                    error: function(err) {
+                        console.log("Error sending email:", err);
+                        alert("Failed to send email."); // Alert on failure
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
